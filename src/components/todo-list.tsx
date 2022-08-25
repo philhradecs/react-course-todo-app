@@ -1,8 +1,14 @@
-import { Todo } from '../test-data/test-todos';
+import { useTodos } from '../hooks/useTodos';
+import { TodoItem } from './todo-item';
 
-type TodoListProps = {
-  todos: Todo[];
-};
-export const TodoList = (props: TodoListProps) => {
-  return <div>Todo List</div>;
+export const TodoList = () => {
+  const { todos } = useTodos();
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} />
+      ))}
+    </ul>
+  );
 };
