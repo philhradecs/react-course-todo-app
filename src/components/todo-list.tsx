@@ -1,4 +1,4 @@
-import { useTodos } from '../hooks/useTodos';
+import { useTodos } from '../hooks/use-todos';
 import { TodoItem } from './todo-item';
 
 export const TodoList = () => {

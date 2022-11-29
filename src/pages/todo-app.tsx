@@ -1,7 +1,7 @@
 import { AddTodo } from '../components/add-todo';
 import { Layout } from '../components/layout';
 import { TodoList } from '../components/todo-list';
-import { useTodos } from '../hooks/useTodos';
+import { useTodos } from '../hooks/use-todos';
 
 export const TodoApp = () => {
   const { clearTodos } = useTodos();

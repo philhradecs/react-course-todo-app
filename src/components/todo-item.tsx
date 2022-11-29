@@ -1,4 +1,4 @@
-import { useTodos } from '../hooks/useTodos';
+import { useTodos } from '../hooks/use-todos';
 import { Todo } from '../test-data/test-todos';
 
 type TodoProps = {

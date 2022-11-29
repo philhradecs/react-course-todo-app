@@ -5,6 +5,7 @@ export const useTodos = () => {
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
 
   const addTodo = (todo: Todo) => setTodos([todo, ...todos]);
+  
   const clearTodos = () => setTodos([]);
 
   const toggleTodo = (id: string) => {
