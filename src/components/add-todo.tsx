@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { useTodos } from '../hooks/use-todos';
 
 export const AddTodo = () => {
@@ -6,26 +6,26 @@ export const AddTodo = () => {
 
   const [title, setTitle] = useState('');
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+  const handleAddTodo = () => {
     setTitle('');
-    addTodo({ title: title, completed: false, id: title });
+    addTodo(title);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          name="title"
-          placeholder="Add a Todo"
-          className="text-black rounded-sm px-2"
-        ></input>
-        <button type="submit" className="ml-2 rounded-full text-3xl p-2">
-          +
-        </button>
-      </form>
+      <input
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
+        name="title"
+        placeholder="Add a Todo"
+        className="text-black rounded-sm px-2"
+      ></input>
+      <button
+        onClick={handleAddTodo}
+        className="ml-2 rounded-full text-3xl p-2"
+      >
+        +
+      </button>
     </div>
   );
 };

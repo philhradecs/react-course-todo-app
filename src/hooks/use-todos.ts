@@ -4,11 +4,19 @@ import { Todo } from '../test-data/test-todos';
 export const useTodos = () => {
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
 
-  const addTodo = (todo: Todo) => setTodos([todo, ...todos]);
-  
-  const clearTodos = () => setTodos([]);
+  const addTodo = (title: string) => {
+    const newId =
+      todos.length > 0 ? Math.max(...todos.map((d) => d.id)) + 1 : 1;
+    const newTodo = { title, completed: false, id: newId };
+    setTodos([...todos, newTodo]);
+  };
 
-  const toggleTodo = (id: string) => {
+  const removeTodo = (id: number) => {
+    const newTodos = todos.filter((item) => item.id !== id);
+    return setTodos(newTodos);
+  };
+
+  const toggleTodo = (id: number) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id
@@ -21,5 +29,7 @@ export const useTodos = () => {
     );
   };
 
-  return { addTodo, clearTodos, toggleTodo, todos };
+  const clearTodos = () => setTodos([]);
+
+  return { addTodo, removeTodo, clearTodos, toggleTodo, todos };
 };
