@@ -12,7 +12,7 @@ export const AddTodo = () => {
   };
 
   return (
-    <div>
+    <div className="flex items-center gap-2">
       <input
         value={title}
         onChange={(event) => setTitle(event.target.value)}
@@ -20,12 +20,11 @@ export const AddTodo = () => {
         placeholder="Add a Todo"
         className="text-black rounded-sm px-2"
       ></input>
-      <button
-        onClick={handleAddTodo}
-        className="ml-2 rounded-full text-3xl p-2"
-      >
-        +
-      </button>
+      <div>
+        <button onClick={handleAddTodo} className="text-3xl">
+          +
+        </button>
+      </div>
     </div>
   );
 };

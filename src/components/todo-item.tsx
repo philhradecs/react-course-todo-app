@@ -6,18 +6,21 @@ type TodoProps = {
 };
 
 export const TodoItem = ({ todo: { completed, title, id } }: TodoProps) => {
-  const { toggleTodo } = useTodos();
+  const { toggleTodo, removeTodo } = useTodos();
 
   return (
-    <li>
-      <div
-        onClick={() => toggleTodo(id)}
-        className={`flex items-center justify-between cursor-pointer border border-gray-700 mb-4 px-4 py-2 rounded x hover:border-gray-600 ${
-          completed ? 'bg-green-900' : 'bg-slate-800'
-        }`}
-      >
-        {title}
-        {completed && <div>✓</div>}
+    <li className="mb-3">
+      <div className="flex items-center gap-2">
+        <div
+          onClick={() => toggleTodo(id)}
+          className={`flex flex-1 items-center justify-between cursor-pointer border border-gray-700 px-4 py-2 rounded hover:border-gray-600 ${
+            completed ? 'bg-green-900' : 'bg-slate-800'
+          }`}
+        >
+          {title}
+          {completed && <div>✓</div>}
+        </div>
+        <button onClick={() => removeTodo(id)}>✗</button>
       </div>
     </li>
   );
